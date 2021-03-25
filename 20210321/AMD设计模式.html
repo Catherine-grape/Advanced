@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>AMD设计模式</title>
+  <meta charset='utf-8'>
+  <link href='https://cdn.maxiang.io/res-min/themes/marxico.css' rel='stylesheet'>
+  <style>
+    .note-content {
+      font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, Song, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='preview-contents' class='note-content'>
+    <h4>AMD模块化思想 - require.js</h4>
+    <blockquote>
+      <p><a href="https://requirejs.org" target="_blank">https://requirejs.org</a></p>
+    </blockquote>
+    <p><img longdesc="./1582194768038.png" alt="Alt text" title="" type="image/png"
+        src="data:image/png;base64,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"
+        class=""></p>
+
+    <p>main.js</p>
+    <pre class="prettyprint with-line-number hljs-dark"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-comment line-number">1.</span><span class="hljs-comment">//全局配置</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">2.</span><span class="hljs-built_in">require</span>.config({
+</div><div class="hljs-line"><span class="hljs-comment line-number">3.</span>    <span class="hljs-attr">baseUrl</span>: <span class="hljs-string">'js/lib'</span>,
+</div><div class="hljs-line"><span class="hljs-comment line-number">4.</span>});
+</div><div class="hljs-line"><span class="hljs-comment line-number">5.</span><wbr>
+</div><div class="hljs-line"><span class="hljs-comment line-number">6.</span><span class="hljs-built_in">require</span>([<span class="hljs-string">'moduleB'</span>, <span class="hljs-string">'moduleA'</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">moduleB, moduleA</span>) </span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">7.</span>    <span class="hljs-built_in">console</span>.log(moduleB.average(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>, <span class="hljs-number">50</span>));
+</div><div class="hljs-line"><span class="hljs-comment line-number">8.</span>});
+</div></code></pre>
+
+    <p>moduleA.js</p>
+    <pre class="prettyprint with-line-number hljs-dark"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-comment line-number">1.</span>define(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">2.</span>    <span class="hljs-keyword">return</span> {
+</div><div class="hljs-line"><span class="hljs-comment line-number">3.</span>        <span class="hljs-comment">// 任意数求和</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">4.</span>        sum(...args) {
+</div><div class="hljs-line"><span class="hljs-comment line-number">5.</span>            <span class="hljs-keyword">let</span> len = args.length,
+</div><div class="hljs-line"><span class="hljs-comment line-number">6.</span>                firstItem = args[<span class="hljs-number">0</span>];
+</div><div class="hljs-line"><span class="hljs-comment line-number">7.</span>            <span class="hljs-keyword">if</span> (len === <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">8.</span>            <span class="hljs-keyword">if</span> (len === <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> firstItem;
+</div><div class="hljs-line"><span class="hljs-comment line-number">9.</span>            <span class="hljs-keyword">return</span> args.reduce(<span class="hljs-function">(<span class="hljs-params">total, item</span>) =&gt;</span> {
+</div><div class="hljs-line"><span class="hljs-comment line-number">10.</span>                <span class="hljs-keyword">return</span> total + item;
+</div><div class="hljs-line"><span class="hljs-comment line-number">11.</span>            });
+</div><div class="hljs-line"><span class="hljs-comment line-number">12.</span>        }
+</div><div class="hljs-line"><span class="hljs-comment line-number">13.</span>    };
+</div><div class="hljs-line"><span class="hljs-comment line-number">14.</span>});
+</div></code></pre>
+
+    <pre class="prettyprint with-line-number hljs-dark"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-comment line-number">1.</span>define([<span class="hljs-string">'moduleA'</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">moudleA</span>) </span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">2.</span>    <span class="hljs-keyword">return</span> {
+</div><div class="hljs-line"><span class="hljs-comment line-number">3.</span>        <span class="hljs-comment">// 求平均数（去掉最大最小值）</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">4.</span>        average(...args) {
+</div><div class="hljs-line"><span class="hljs-comment line-number">5.</span>            <span class="hljs-keyword">let</span> len = args.length,
+</div><div class="hljs-line"><span class="hljs-comment line-number">6.</span>                firstItem = args[<span class="hljs-number">0</span>];
+</div><div class="hljs-line"><span class="hljs-comment line-number">7.</span>            <span class="hljs-keyword">if</span> (len === <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+</div><div class="hljs-line"><span class="hljs-comment line-number">8.</span>            <span class="hljs-keyword">if</span> (len === <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> firstItem;
+</div><div class="hljs-line"><span class="hljs-comment line-number">9.</span>            args.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a - b);
+</div><div class="hljs-line"><span class="hljs-comment line-number">10.</span>            args.pop();
+</div><div class="hljs-line"><span class="hljs-comment line-number">11.</span>            args.shift();
+</div><div class="hljs-line"><span class="hljs-comment line-number">12.</span>            <span class="hljs-keyword">return</span> (moudleA.sum(...args) / args.length).toFixed(<span class="hljs-number">2</span>);
+</div><div class="hljs-line"><span class="hljs-comment line-number">13.</span>        }
+</div><div class="hljs-line"><span class="hljs-comment line-number">14.</span>    };
+</div><div class="hljs-line"><span class="hljs-comment line-number">15.</span>});
+</div></code></pre>
+
+    <p>自己实现一套AMD模块机制</p>
+    <pre class="prettyprint with-line-number hljs-dark"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-comment line-number">1.</span><span class="hljs-keyword">let</span> factories = {};
+</div><div class="hljs-line"><span class="hljs-comment line-number">2.</span><wbr>
+</div><div class="hljs-line"><span class="hljs-comment line-number">3.</span><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">define</span>(<span class="hljs-params">moduleName, factory</span>) </span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">4.</span>    factories[moduleName] = factory;
+</div><div class="hljs-line"><span class="hljs-comment line-number">5.</span>}
+</div><div class="hljs-line"><span class="hljs-comment line-number">6.</span><wbr>
+</div><div class="hljs-line"><span class="hljs-comment line-number">7.</span><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">require</span>(<span class="hljs-params">modules, callback</span>) </span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">8.</span>    modules = modules.map(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">item</span>) </span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">9.</span>        <span class="hljs-keyword">let</span> factory = factories[item];
+</div><div class="hljs-line"><span class="hljs-comment line-number">10.</span>        <span class="hljs-keyword">return</span> factory();
+</div><div class="hljs-line"><span class="hljs-comment line-number">11.</span>    });
+</div><div class="hljs-line"><span class="hljs-comment line-number">12.</span>    callback(...modules);
+</div><div class="hljs-line"><span class="hljs-comment line-number">13.</span>}
+</div><div class="hljs-line"><span class="hljs-comment line-number">14.</span><wbr>
+</div><div class="hljs-line"><span class="hljs-comment line-number">15.</span><span class="hljs-comment">/* 使用AMD */</span>
+</div><div class="hljs-line"><span class="hljs-comment line-number">16.</span>define(<span class="hljs-string">'moduleA'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">17.</span>    <span class="hljs-keyword">return</span> {
+</div><div class="hljs-line"><span class="hljs-comment line-number">18.</span>        fn() {
+</div><div class="hljs-line"><span class="hljs-comment line-number">19.</span>            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'moduleA'</span>);
+</div><div class="hljs-line"><span class="hljs-comment line-number">20.</span>        }
+</div><div class="hljs-line"><span class="hljs-comment line-number">21.</span>    };
+</div><div class="hljs-line"><span class="hljs-comment line-number">22.</span>});
+</div><div class="hljs-line"><span class="hljs-comment line-number">23.</span><wbr>
+</div><div class="hljs-line"><span class="hljs-comment line-number">24.</span>define(<span class="hljs-string">'moduleB'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">25.</span>    <span class="hljs-keyword">return</span> {
+</div><div class="hljs-line"><span class="hljs-comment line-number">26.</span>        fn() {
+</div><div class="hljs-line"><span class="hljs-comment line-number">27.</span>            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'moduleB'</span>);
+</div><div class="hljs-line"><span class="hljs-comment line-number">28.</span>        }
+</div><div class="hljs-line"><span class="hljs-comment line-number">29.</span>    };
+</div><div class="hljs-line"><span class="hljs-comment line-number">30.</span>});
+</div><div class="hljs-line"><span class="hljs-comment line-number">31.</span><wbr>
+</div><div class="hljs-line"><span class="hljs-comment line-number">32.</span><span class="hljs-built_in">require</span>([<span class="hljs-string">'moduleA'</span>, <span class="hljs-string">'moduleB'</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">moduleA, moduleB</span>) </span>{
+</div><div class="hljs-line"><span class="hljs-comment line-number">33.</span>    moduleB.fn();
+</div><div class="hljs-line"><span class="hljs-comment line-number">34.</span>    moduleA.fn();
+</div><div class="hljs-line"><span class="hljs-comment line-number">35.</span>});
+</div></code></pre>
+  </div>
+</body>
+
+</html>
