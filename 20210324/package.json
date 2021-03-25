@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "lodash": "^4.17.21",
+    "redux": "^4.0.5",
+    "underscore": "^1.12.1",
+    "zepto": "^1.2.0"
+  }
+}
