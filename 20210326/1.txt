@@ -1,0 +1,9 @@
+function Fn(x, y) {
+    let sum = 10;
+    this.total = x + y;
+    this.say = function () {
+        console.log(`我计算的和是:${this.total}`);
+    };
+}
+let res = Fn(10, 20);
+let f1 = new Fn(10, 20);
