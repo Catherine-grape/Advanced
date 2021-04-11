@@ -1,0 +1,20 @@
+{
+  "name": "20210411",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "promises-aplus-tests": "^2.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "promises-aplus-tests mypromise.min.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
